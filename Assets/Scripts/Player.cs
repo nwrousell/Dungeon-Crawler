@@ -13,6 +13,13 @@ public class Player : MonoBehaviour
 
     public Animator animator;
 
+    [HideInInspector]
+    public HealthManager hm;
+
+    private void Start()
+    {
+        hm = GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthManager>();
+    }
 
     private void Update()
     {
@@ -33,4 +40,10 @@ public class Player : MonoBehaviour
     {
         rb.MovePosition(rb.position + new Vector2(horizontalMove * speed * Time.fixedDeltaTime, verticalMove * speed * Time.fixedDeltaTime));
     }
+    public void TakeDamage(int amount)
+    {
+        hm.health -= amount;
+        Debug.Log("Health Lost.");
+    }
+
 }

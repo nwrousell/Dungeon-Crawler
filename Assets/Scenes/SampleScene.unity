@@ -314,8 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 382968248}
-  speed: 10
+  speed: 12
   animator: {fileID: 382968253}
+  hm: {fileID: 0}
 --- !u!95 &382968253
 Animator:
   serializedVersion: 3
@@ -1569,8 +1570,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1400442231}
   - component: {fileID: 1400442230}
-  - component: {fileID: 1400442229}
   - component: {fileID: 1400442232}
+  - component: {fileID: 1400442233}
+  - component: {fileID: 1400442229}
   m_Layer: 8
   m_Name: Waddler
   m_TagString: Untagged
@@ -1587,12 +1589,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1400442228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f971e198050b74ca1069785aa5bbcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 87efffbdd712fb84a95d10be7b1fb8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullHealth: 3
+  fullHealth: 2
+  health: 0
+  speed: 4
   bloodEffect: {fileID: 7517986951110181769, guid: 8a3852005a1d9d94a915b2418b20dd78,
     type: 3}
+  player: {fileID: 0}
+  timeBetweenAttacks: 1.5
+  attackTime: 0
+  damage: 1
+  stopDistance: 3
 --- !u!212 &1400442230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1632,8 +1641,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 302496172615864815, guid: 8dcbb0731e7e76e4a96309b59b0e77d1, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 3593975562327985826, guid: 91dbf63de9b79144d9fbf6d35d346c0b,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1652,7 +1662,7 @@ Transform:
   m_GameObject: {fileID: 1400442228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.05, y: -4.28, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1674,7 +1684,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.375, y: 0.84375}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1683,6 +1693,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.375, y: 0.84375}
   m_EdgeRadius: 0
+--- !u!95 &1400442233
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400442228}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97f85312f0c202643b567f51d8d3dc4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1609569706
 GameObject:
   m_ObjectHideFlags: 0
