@@ -11,8 +11,25 @@ public class Player : MonoBehaviour
     private float horizontalMove;
     private float verticalMove;
 
+    public GameObject bloodEffect;
+
     public Animator animator;
 
+    [HideInInspector]
+    public Animator hurtAnim;
+
+    [HideInInspector]
+    public HealthManager hm;
+
+    [HideInInspector]
+    public CameraShake camShake;
+
+    private void Start()
+    {
+        hm = GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthManager>();
+        camShake = GameObject.FindObjectOfType<Camera>().GetComponent<CameraShake>();
+        hurtAnim = GameObject.FindGameObjectWithTag("EffectsPanel").GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -33,4 +50,18 @@ public class Player : MonoBehaviour
     {
         rb.MovePosition(rb.position + new Vector2(horizontalMove * speed * Time.fixedDeltaTime, verticalMove * speed * Time.fixedDeltaTime));
     }
+    public void TakeDamage(int amount)
+    {
+        // Blood Effect
+        Instantiate(bloodEffect, transform);
+
+        // Screen Shake
+        camShake.shakeDuration = 0.3f;
+
+        // Screen Flashing Red
+        hurtAnim.SetTrigger("Hurt");
+
+        hm.health -= amount;
+    }
+
 }
