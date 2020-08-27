@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 91dbf63de9b79144d9fbf6d35d346c0b
+guid: b96b7f19e92fe854497cca4763190ee4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3593975562327985826
-    second: Meh_0
+      213: -5058699613802986502
+    second: Spider Enemy_0
   - first:
-      213: -7553173520777984338
-    second: Meh_1
+      213: 8081401579176520195
+    second: Spider Enemy_1
   - first:
-      213: 4283360411849054332
-    second: Meh_2
+      213: -5863390352555988584
+    second: Spider Enemy_2
+  - first:
+      213: -6864517029950195557
+    second: Spider Enemy_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Meh_0
+      name: Spider Enemy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -134,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ae8ef37bbd50e130800000000000000
-      internalID: 3593975562327985826
+      spriteID: af30eddd083ebc9b0800000000000000
+      internalID: -5058699613802986502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meh_1
+      name: Spider Enemy_1
       rect:
         serializedVersion: 2
         x: 32
@@ -155,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea6442783bcbd2790800000000000000
-      internalID: -7553173520777984338
+      spriteID: 30ae81e4be7e62070800000000000000
+      internalID: 8081401579176520195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Meh_2
+      name: Spider Enemy_2
       rect:
         serializedVersion: 2
         x: 0
@@ -176,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c78db31b99d817b30800000000000000
-      internalID: 4283360411849054332
+      spriteID: 899a2783a8d01aea0800000000000000
+      internalID: -5863390352555988584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spider Enemy_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b98f23b81265cb0a0800000000000000
+      internalID: -6864517029950195557
       vertices: []
       indices: 
       edges: []

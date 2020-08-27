@@ -7,6 +7,8 @@ public class MeleeEnemy : Enemy
 
     public float stopDistance = 1f;
 
+    public float attackSpeed = 10f;
+
     private void FixedUpdate()
     {
         if(Vector2.Distance(transform.position, player.transform.position) <= stopDistance)
@@ -31,8 +33,26 @@ public class MeleeEnemy : Enemy
 
     IEnumerator Attack()
     {
-        player.GetComponent<Player>().TakeDamage(damage);
-        yield return null;
+        Vector2 originalPos = transform.position;
+        Vector2 targetPos = player.transform.position;
+
+        float percent = 0;
+        bool doneDamage = false;
+
+        while (percent <= 1)
+        {
+            percent += Time.deltaTime * attackSpeed;
+            float formula = (-Mathf.Pow(percent, 2) + percent) * 4;
+            transform.position = Vector2.Lerp(originalPos, targetPos, formula);
+            if(percent >= 0.5 && !doneDamage)
+            {
+                player.GetComponent<Player>().TakeDamage(damage);
+                doneDamage = true;
+            }
+
+            yield return null;
+        }
+        
     }
 
 }

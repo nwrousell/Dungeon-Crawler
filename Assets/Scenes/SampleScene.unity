@@ -317,7 +317,9 @@ MonoBehaviour:
   bloodEffect: {fileID: 7517986951110181769, guid: 8a3852005a1d9d94a915b2418b20dd78,
     type: 3}
   animator: {fileID: 382968253}
+  hurtAnim: {fileID: 0}
   hm: {fileID: 0}
+  camShake: {fileID: 0}
 --- !u!95 &382968253
 Animator:
   serializedVersion: 3
@@ -1620,6 +1622,7 @@ MonoBehaviour:
   attackTime: 0
   damage: 1
   stopDistance: 3
+  attackSpeed: 5
 --- !u!212 &1400442230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1659,13 +1662,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 3593975562327985826, guid: 91dbf63de9b79144d9fbf6d35d346c0b,
+  m_Sprite: {fileID: -5058699613802986502, guid: b96b7f19e92fe854497cca4763190ee4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1679,7 +1682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400442228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.05, y: -4.28, z: 0}
+  m_LocalPosition: {x: 7.16, y: -2.59, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1698,18 +1701,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.012772977, y: -0.052916333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.375, y: 0.84375}
+  m_Size: {x: 0.7508898, y: 0.8692962}
   m_EdgeRadius: 0
 --- !u!95 &1400442233
 Animator:
