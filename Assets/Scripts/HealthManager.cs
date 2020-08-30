@@ -23,6 +23,12 @@ public class HealthManager : MonoBehaviour
 
     void Update()
     {
+        // If health is greater than fullHealth, fix it
+        if(health > fullHealth)
+        {
+            health = fullHealth;
+        }
+
         // Loop through heart images and render them correctly to show current health
         for (int i = 0; i < heartImages.Length; i++)
         {

@@ -100,7 +100,8 @@ MonoBehaviour:
   health: 2
   pickupEffect: {fileID: 7517986951110181769, guid: e69e8e5a5a5628240ac5536acc848437,
     type: 3}
-  pickUpSound: {fileID: 0}
+  pickUpSound: {fileID: 4500953026285918615, guid: 5a7daacc9d15cea45b4519da8920264e,
+    type: 3}
 --- !u!61 &2188222637647973075
 BoxCollider2D:
   m_ObjectHideFlags: 0

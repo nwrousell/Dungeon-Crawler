@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private float verticalMove;
 
     public GameObject bloodEffect;
+    public GameObject hurtSound;
 
     public Animator animator;
 
@@ -23,6 +24,17 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public CameraShake camShake;
+
+    private void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+
+        if (GameObject.Find(gameObject.name)
+                 && GameObject.Find(gameObject.name) != this.gameObject)
+        {
+            Destroy(GameObject.Find(gameObject.name));
+        }
+    }
 
     private void Start()
     {
@@ -54,6 +66,7 @@ public class Player : MonoBehaviour
     {
         // Blood Effect
         Instantiate(bloodEffect, transform);
+        Instantiate(hurtSound, transform);
 
         // Screen Shake
         camShake.shakeDuration = 0.3f;

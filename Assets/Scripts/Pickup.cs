@@ -16,10 +16,18 @@ public class Pickup : MonoBehaviour
 
     public GameObject pickUpSound;
 
+    private GameObject dropShadow;
+
     private void Start()
     {
         pm = GameObject.FindGameObjectWithTag("GameController").GetComponent<PickupManager>();
         hm = GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthManager>();
+
+        // Un-parent drop shadow so it doesn't follow animation
+        if (transform.GetChild(0) != null) {
+            dropShadow = transform.GetChild(0).gameObject;
+            dropShadow.transform.parent = null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,9 +41,10 @@ public class Pickup : MonoBehaviour
 
             Instantiate(pickupEffect, transform);
 
-            //Instantiate(pickUpSound, transform);
+            Instantiate(pickUpSound, transform);
 
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 0.05f);
+            Destroy(dropShadow);
         }
     }
 
