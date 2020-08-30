@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146707739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.004, y: -0.414, z: 0}
-  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
+  m_LocalPosition: {x: -0.01, y: -0.436, z: 0}
+  m_LocalScale: {x: 0.19502598, y: 0.19223024, z: 1}
   m_Children: []
   m_Father: {fileID: 8443480005067394927}
   m_RootOrder: 0
@@ -94,9 +94,9 @@ GameObject:
   - component: {fileID: 8443480005067394912}
   - component: {fileID: 8443480005067394913}
   - component: {fileID: 8443480005067394925}
-  - component: {fileID: 725891465}
+  - component: {fileID: 419847011}
   m_Layer: 8
-  m_Name: Waddler
+  m_Name: Burning Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 8443480005067394924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.16, y: -2.59, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1146707740}
   m_Father: {fileID: 0}
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -5058699613802986502, guid: b96b7f19e92fe854497cca4763190ee4,
+  m_Sprite: {fileID: -8505490852599618969, guid: ab71de08f6ff6ef4e91acd98c945d628,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -204,7 +204,7 @@ Animator:
   m_GameObject: {fileID: 8443480005067394924}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 97f85312f0c202643b567f51d8d3dc4f, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -225,9 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87efffbdd712fb84a95d10be7b1fb8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullHealth: 2
+  fullHealth: 3
   health: 0
-  speed: 4
+  speed: 6
   bloodEffect: {fileID: 7517986951110181769, guid: 8a3852005a1d9d94a915b2418b20dd78,
     type: 3}
   hitSound: {fileID: 4500953026285918615, guid: 7e3498015b7414648b7d7ce128c32c12,
@@ -238,7 +238,7 @@ MonoBehaviour:
   damage: 1
   stopDistance: 3
   attackSpeed: 5
---- !u!50 &725891465
+--- !u!50 &419847011
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

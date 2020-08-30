@@ -8,11 +8,23 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 5f;
 
+    public float dashSpeed;
+    private float dashTime;
+    public float startDashTime;
+    private bool dashing = false;
+    private float canDash;
+    public float dashCoolDown = 1.5f;
+
     private float horizontalMove;
     private float verticalMove;
 
     public GameObject bloodEffect;
     public GameObject hurtSound;
+    public GameObject dashParticleEffect;
+    private GameObject currentDashEffect;
+    public GameObject dashSound;
+
+    private Vector2 dashMovement;
 
     public Animator animator;
 
@@ -41,6 +53,8 @@ public class Player : MonoBehaviour
         hm = GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthManager>();
         camShake = GameObject.FindObjectOfType<Camera>().GetComponent<CameraShake>();
         hurtAnim = GameObject.FindGameObjectWithTag("EffectsPanel").GetComponent<Animator>();
+
+        dashTime = startDashTime;
     }
 
     private void Update()
@@ -56,11 +70,38 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsRunning", false);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift) && Time.time >= canDash && (horizontalMove != 0 || verticalMove != 0))
+        {
+            dashing = true;
+            dashTime = startDashTime;
+            canDash = Time.time + dashCoolDown;
+            currentDashEffect = Instantiate(dashParticleEffect, transform);
+            currentDashEffect.transform.parent = null;
+            dashMovement = new Vector2(horizontalMove, verticalMove);
+            Instantiate(dashSound, transform);
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + new Vector2(horizontalMove * speed * Time.fixedDeltaTime, verticalMove * speed * Time.fixedDeltaTime));
+        if (!dashing)
+        {
+            rb.MovePosition(rb.position + new Vector2(horizontalMove * speed * Time.fixedDeltaTime, verticalMove * speed * Time.fixedDeltaTime));
+        }
+        else
+            {
+                if (dashTime > 0)
+                {
+                    dashTime -= Time.deltaTime;
+                    rb.velocity = new Vector2(dashMovement.x * dashSpeed * Time.fixedDeltaTime, dashMovement.y * dashSpeed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    dashing = false;
+                    rb.velocity = Vector2.zero;
+                }
+            }
     }
     public void TakeDamage(int amount)
     {
