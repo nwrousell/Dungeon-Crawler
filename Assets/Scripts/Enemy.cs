@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public float speed = 5f;
 
     public GameObject bloodEffect;
+    public GameObject hitSound;
 
     [HideInInspector]
     public Player player;
@@ -41,12 +42,11 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         Instantiate(bloodEffect, transform);
-
-        Debug.Log("Took Damage");
+        Instantiate(hitSound, transform);
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
         else
         {
