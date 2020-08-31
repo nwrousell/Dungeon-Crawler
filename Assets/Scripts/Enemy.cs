@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
     public GameObject hitSound;
 
     [HideInInspector]
+    public RoomManager rm;
+
+    [HideInInspector]
     public Player player;
 
     public float timeBetweenAttacks = 0.5f;
@@ -25,17 +28,10 @@ public class Enemy : MonoBehaviour
 
     public int damage;
 
-    // Start is called before the first frame update
     void Start()
     {
         health = fullHealth;
         player = GameObject.FindObjectOfType<Player>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void TakeDamage(int damage)
@@ -46,6 +42,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            rm.EnemyKilled();
             Destroy(gameObject, 0.1f);
         }
         else
