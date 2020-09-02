@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 419847011}
   m_Layer: 8
   m_Name: Burning Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,6 +232,7 @@ MonoBehaviour:
     type: 3}
   hitSound: {fileID: 4500953026285918615, guid: 7e3498015b7414648b7d7ce128c32c12,
     type: 3}
+  rm: {fileID: 0}
   player: {fileID: 0}
   timeBetweenAttacks: 1.5
   attackTime: 0

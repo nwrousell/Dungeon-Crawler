@@ -28,7 +28,7 @@ public class Sword : MonoBehaviour
             transform.rotation = rotation;
         }
 
-        if (Time.time >= canAttackTime && Input.GetKey(KeyCode.Space))
+        /*if (Time.time >= canAttackTime && Input.GetKey(KeyCode.Space))
         {
             // attack
 
@@ -36,6 +36,7 @@ public class Sword : MonoBehaviour
 
             canAttackTime = Time.time + coolDown;
         }
+        */
     }
 
     IEnumerator Swing(int swingRange, float swingLength)
@@ -69,6 +70,14 @@ public class Sword : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+        }
     }
 
 }

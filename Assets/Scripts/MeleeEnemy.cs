@@ -52,7 +52,9 @@ public class MeleeEnemy : Enemy
 
             yield return null;
         }
-        
+        transform.position = originalPos;
+        Debug.Log("RANNNNNF");
+        yield return null;
     }
 
 }

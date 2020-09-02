@@ -34,10 +34,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public HealthManager hm;
 
-    [HideInInspector]
-    public CameraShake camShake;
+    private CameraShake camShake;
 
-    private void Awake()
+    /*private void Awake()
     {
         //DontDestroyOnLoad(gameObject);
 
@@ -46,15 +45,17 @@ public class Player : MonoBehaviour
         {
             Destroy(GameObject.Find(gameObject.name));
         }
-    }
+    }*/
 
     private void Start()
     {
         hm = GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthManager>();
-        camShake = GameObject.FindObjectOfType<Camera>().GetComponent<CameraShake>();
+        camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         hurtAnim = GameObject.FindGameObjectWithTag("EffectsPanel").GetComponent<Animator>();
 
         dashTime = startDashTime;
+
+        Debug.Log(hm +"   "+ camShake +"   "+ hurtAnim);
     }
 
     private void Update()
@@ -108,6 +109,9 @@ public class Player : MonoBehaviour
         // Blood Effect
         Instantiate(bloodEffect, transform);
         Instantiate(hurtSound, transform);
+
+        Debug.Log("camshake: " + camShake);
+        Debug.Log("hurtanim: " + hurtAnim);
 
         // Screen Shake
         camShake.shakeDuration = 0.3f;

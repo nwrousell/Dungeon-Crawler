@@ -87,4 +87,11 @@ public class RoomManager : MonoBehaviour
     {
         transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
     }
+
+    public void Reset()
+    {
+        enemiesDead = 0;
+        RoomEntered();
+    }
+
 }
