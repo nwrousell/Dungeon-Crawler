@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8443480005067394924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39909363, y: 51.196777, z: 0}
+  m_LocalPosition: {x: -6.3444586, y: 42.053825, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1146707740}
@@ -231,6 +231,9 @@ MonoBehaviour:
   bloodEffect: {fileID: 7517986951110181769, guid: 8a3852005a1d9d94a915b2418b20dd78,
     type: 3}
   hitSound: {fileID: 4500953026285918615, guid: 7e3498015b7414648b7d7ce128c32c12,
+    type: 3}
+  coinsToDrop: 0100000003000000
+  coinTemplate: {fileID: 3134276765659063879, guid: 0daceca3f7b9f854cabc8b2e956357b3,
     type: 3}
   rm: {fileID: 0}
   player: {fileID: 0}

@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
     public GameObject bloodEffect;
     public GameObject hitSound;
 
+    public int[] coinsToDrop;
+
+    public GameObject coinTemplate;
+
     [HideInInspector]
     public RoomManager rm;
 
@@ -43,6 +47,20 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             rm.EnemyKilled();
+
+            int coins = Random.Range(coinsToDrop[0], coinsToDrop[1]);
+            for (int i = 0; i < coins; i++)
+            {
+                float xChange = Random.Range(-3, 3);
+                float yChange = Random.Range(-3, 3);
+                Vector3 position = new Vector3(transform.position.x + xChange, transform.position.y + yChange, 0);
+                GameObject coin = coinTemplate;
+
+                coin.transform.position = position;
+
+                Instantiate(coin);
+
+            }
             Destroy(gameObject, 0.1f);
         }
         else

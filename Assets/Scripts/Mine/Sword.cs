@@ -10,17 +10,23 @@ public class Sword : MonoBehaviour
     public float coolDown;
     private float canAttackTime;
 
-    public Transform attackPos;
     public float attackRange;
+
+    private Player player;
 
     public LayerMask whatIsEnemies;
 
     private bool swinging = false;
 
+    private void Start()
+    {
+        player = transform.parent.gameObject.GetComponent<Player>();
+    }
+
     private void Update()
     {
         // Points sword towards cursor if not swinging
-        if (!swinging)
+        if (!swinging && player.canMove)
         {
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 45; // Subtract 45 to account for the angle of the sword sprite
@@ -39,7 +45,7 @@ public class Sword : MonoBehaviour
         */
     }
 
-    IEnumerator Swing(int swingRange, float swingLength)
+    /*IEnumerator Swing(int swingRange, float swingLength)
     {
         swinging = true;
         float endTime = Time.time + swingLength;
@@ -70,7 +76,7 @@ public class Sword : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -23,16 +23,19 @@ public class Player : MonoBehaviour
     public GameObject dashParticleEffect;
     private GameObject currentDashEffect;
     public GameObject dashSound;
+    public GameObject coinSound;
 
     private Vector2 dashMovement;
 
     public Animator animator;
 
-    [HideInInspector]
-    public Animator hurtAnim;
+    private Animator hurtAnim;
+
+    private HealthManager hm;
+    private PickupManager pm;
 
     [HideInInspector]
-    public HealthManager hm;
+    public bool canMove = true;
 
     private CameraShake camShake;
 
@@ -50,37 +53,43 @@ public class Player : MonoBehaviour
     private void Start()
     {
         hm = GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthManager>();
+        pm = GameObject.FindGameObjectWithTag("GameController").GetComponent<PickupManager>();
         camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         hurtAnim = GameObject.FindGameObjectWithTag("EffectsPanel").GetComponent<Animator>();
 
         dashTime = startDashTime;
-
-        Debug.Log(hm +"   "+ camShake +"   "+ hurtAnim);
     }
 
     private void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal");
-        verticalMove = Input.GetAxisRaw("Vertical");
-
-        if (horizontalMove != 0 || verticalMove != 0)
+        if (canMove)
         {
-            animator.SetBool("IsRunning", true);
+            horizontalMove = Input.GetAxisRaw("Horizontal");
+            verticalMove = Input.GetAxisRaw("Vertical");
+
+            if (horizontalMove != 0 || verticalMove != 0)
+            {
+                animator.SetBool("IsRunning", true);
+            }
+            else
+            {
+                animator.SetBool("IsRunning", false);
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) && Time.time >= canDash && (horizontalMove != 0 || verticalMove != 0))
+            {
+                dashing = true;
+                dashTime = startDashTime;
+                canDash = Time.time + dashCoolDown;
+                currentDashEffect = Instantiate(dashParticleEffect, transform);
+                currentDashEffect.transform.parent = null;
+                dashMovement = new Vector2(horizontalMove, verticalMove);
+                Instantiate(dashSound, transform);
+            }
         }
         else
         {
             animator.SetBool("IsRunning", false);
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && Time.time >= canDash && (horizontalMove != 0 || verticalMove != 0))
-        {
-            dashing = true;
-            dashTime = startDashTime;
-            canDash = Time.time + dashCoolDown;
-            currentDashEffect = Instantiate(dashParticleEffect, transform);
-            currentDashEffect.transform.parent = null;
-            dashMovement = new Vector2(horizontalMove, verticalMove);
-            Instantiate(dashSound, transform);
         }
     }
 
@@ -122,4 +131,15 @@ public class Player : MonoBehaviour
         hm.health -= amount;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Coin")
+        {
+            pm.AddCoins(1);
+            Destroy(collision.gameObject);
+            Instantiate(coinSound);
+        }
+    }
+
 }
+

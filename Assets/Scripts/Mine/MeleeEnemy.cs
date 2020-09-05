@@ -11,24 +11,30 @@ public class MeleeEnemy : Enemy
 
     private void FixedUpdate()
     {
-        if(Vector2.Distance(transform.position, player.transform.position) <= stopDistance)
+        if (player.canMove)
         {
-            // Can Attack
-            if(Time.time >= attackTime)
+            if (Vector2.Distance(transform.position, player.transform.position) <= stopDistance)
             {
-                // Reset Attack Time
-                attackTime = Time.time + timeBetweenAttacks;
+                // Can Attack
+                if (Time.time >= attackTime)
+                {
+                    // Reset Attack Time
+                    attackTime = Time.time + timeBetweenAttacks;
 
-                // Attack
-                Coroutine attack = StartCoroutine(Attack());
+                    // Attack
+                    Coroutine attack = StartCoroutine(Attack());
+                }
+            }
+            else
+            {
+                // Move Towards Player
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
             }
         }
         else
         {
-            // Move Towards Player
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
+            TakeDamage(health);
         }
-        
     }
 
     IEnumerator Attack()
@@ -53,7 +59,6 @@ public class MeleeEnemy : Enemy
             yield return null;
         }
         transform.position = originalPos;
-        Debug.Log("RANNNNNF");
         yield return null;
     }
 
