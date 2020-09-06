@@ -11,4 +11,5 @@ public class Temporary : MonoBehaviour
     {
         Destroy(gameObject, lifeTime);
     }
+
 }
